@@ -224,3 +224,27 @@ SELECT dbo.CarNameCount ('Porseche')
 
 
 
+USE TurboAz
+
+
+
+--Silinəndə və update olanda geriyə qalan elanlar
+
+CREATE TRIGGER DeleteAndUpdateThenAllElan
+ON TurboElan
+AFTER DELETE , UPDATE
+AS
+BEGIN
+SELECT * FROM TurboElan
+END
+
+
+--Yeni məhsul əlavə ediləndə
+
+CREATE TRIGGER NewProductIsAdded
+ON TurboElan
+AFTER INSERT 
+AS
+BEGIN
+SELECT * FROM TurboElan
+END
